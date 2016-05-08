@@ -15,14 +15,14 @@
     <!--</context-param>-->
 
     <servlet>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>hello</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
         <!--dispathcer-servlet.xml will be treated as default contextConfigLocation-->
         <!--where file name start with servlet-name here-->
     </servlet>
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
+        <servlet-name>hello</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 </web-app>

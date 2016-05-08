@@ -176,4 +176,12 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>resources/</directory>
+            </resource>
+        </resources>
+    </build>
 </project>
