@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.cloorc.example.springmvc.utils.HttpHelper;
 
 @Controller
-@RequestMapping(value = "")
 public class SimpleController {
 
     @ResponseBody
-    @RequestMapping(value="/hello",method= RequestMethod.GET)
+    @RequestMapping(value="/hello", method=RequestMethod.GET)
     public String hello () {
         return ("hello, we r in java");
     }
