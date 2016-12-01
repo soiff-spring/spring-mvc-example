@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.web.servlet.view.RedirectView;
 import xyz.cloorc.example.springmvc.utils.HttpHelper;
 
 @Controller
@@ -21,7 +22,7 @@ public class SimpleController {
 
 	@RequestMapping(value = "/redirect", method = RequestMethod.GET)
 	public ModelAndView redirect(@PathVariable long id) {
-		return Redirect;
+		return new ModelAndView(new RedirectView("https://github.com"));
 	}
 
 	@ResponseBody
