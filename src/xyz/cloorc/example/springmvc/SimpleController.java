@@ -1,5 +1,6 @@
 package xyz.cloorc.example.springmvc;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,13 +37,12 @@ public class SimpleController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/api/login")
-    public Map<String, List<String>> login(
+    @RequestMapping(value = "/login")
+    public String login(
         HttpServletRequest request,
         HttpServletResponse response,
         @RequestParam(name = "username", required = false) String username,
-        @RequestParam(name = "password", required = false) String password)
-    {
+        @RequestParam(name = "password", required = false) String password) {
         final Map headers = new HashMap(request.getParameterMap());
         Enumeration enumeration = request.getHeaderNames();
         Object name;
@@ -52,6 +52,6 @@ public class SimpleController {
         }
         headers.put("username", Collections.singletonList(username));
         headers.put("password", Collections.singletonList(password));
-        return headers;
+        return headers.toString();
     }
 }

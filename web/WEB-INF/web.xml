@@ -24,5 +24,6 @@
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
         <url-pattern>/rest/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 </web-app>
