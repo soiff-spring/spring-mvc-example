@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+<script src="jquery-3.1.1.min.js"></script>
+<script type="application/javascript">
+function login_callback (data, text, xhr) {
+	console.log(JSON.stringify(data));
+    $("#login_output").html(JSON.stringify(data));
+}
+function redirect_callback (data, text, xhr) {
+	console.log(JSON.stringify(data));
+    $("#redirect_output").html(JSON.stringify(data));
+}
+function redirect_complete_callback (xhr, ts) {
+	console.log("redirect_complete_callback");
+    $("#redirect_output").html("redirect_complete_callback");
+}
+$(document).ready(function () {
+    $("#login").click(function () {
+        $.post({
+        	url: "api/login",
+            data: "username=zhangsan&password=P@ssw0rd",
+            success: login_callback
+        });
+    });
+    $("#redirect").click(function () {
+    	window.location.href="http://localhost:8080/api/redirect?url=" + window.location.href
+        $.post({
+        	url: "api/redirect",
+            data: "url=http://localhost:8080/api/redirect?url=http://localhost",
+            success: redirect_callback,
+            complete: redirect_complete_callback
+        });
+    });
+});
+</script>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+
+<button type="button" id="login">Login</button><br/>
+<label id="login_output"></label>
+<button type="button" id="redirect">Redirect</button><br/>
+<label id="redirect_output"></label>
+</body>
+</html>

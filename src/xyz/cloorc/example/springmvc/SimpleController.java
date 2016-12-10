@@ -2,11 +2,7 @@ package xyz.cloorc.example.springmvc;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.web.servlet.view.RedirectView;
@@ -25,9 +21,15 @@ public class SimpleController {
         return ("hello, we r in java");
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public ModelAndView redirect(@PathVariable long id) {
-        return new ModelAndView(new RedirectView("https://github.com"));
+    @CrossOrigin(origins = {
+        "http://localhost",
+        "http://localhost:8080",
+        "http://127.0.0.1",
+        "http://127.0.0.1:8080"
+    })
+    @RequestMapping(value = "/redirect")
+    public ModelAndView redirect(HttpServletRequest request, @RequestParam(name = "url") String url) {
+        return new ModelAndView(new RedirectView(url));
     }
 
     @ResponseBody
