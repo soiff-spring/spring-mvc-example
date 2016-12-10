@@ -14,10 +14,10 @@ import java.util.Date;
  * @since : 1.8
  */
 @Slf4j
-@Component
+//@Component
 public class HelloScheduler {
 
-    @Scheduled(cron = "* * * * * ?")
+    @Scheduled(cron = "0 * * * * ?")
     public void hello() {
         log.info("{} : hello world ...", new Date().getTime());
     }
