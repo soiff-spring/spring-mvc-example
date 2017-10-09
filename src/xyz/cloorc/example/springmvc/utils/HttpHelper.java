@@ -22,11 +22,10 @@ import java.util.Map;
 /**
  * Created by zhangh on 2016/03/01.
  *
- * @Description: com.dtdream.vanyar.message.autoconfiguration
  * @Author: zhangh
  * @Date: 2016/03/01
  * @Time: 15:09
- * @Email: zhangh@dtdream.com
+ * @Email: wittcnezh@foxmail.com
  */
 public class HttpHelper {
     private static SSLSocketFactory factory = null;
